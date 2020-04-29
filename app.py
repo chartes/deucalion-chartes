@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 
 from flask_pie import PieController
-from pie_extended.models.lasla import get as lasla_get
-from pie_extended.models.fro import get as fro_get
+from pie_extended.models.lasla import imports as lasla_get
+from pie_extended.models.fro import imports as fro_get
 from pie_extended.models.fr import imports as fr_get
 from pie_extended.cli.sub import get_tagger
 
