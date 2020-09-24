@@ -61,6 +61,10 @@
       <div class="row" style="margin-top:15px; margin-bottom:15px; font-size: small;">
         <div class="col-12">
           <h2>Cite with the following</h2>
+            <p>Please remember that <b>corpus creation and software engineering is valid research</b>, so please <b>cite these resources</b>
+                when you use this lemmatizer for your research: this includes the wonderful original research by E. Manjavacas, M. Kestemont and Á. Kádár
+                as well as the software wrapping built to handle pre- and post-processing. </p>
+            <p>For each models, a bibliography and potentially other citable works are given, such as models and datasets are given.</p>
 <pre>
 @software{thibault_clerice_2020_3883590,
   author       = {Clérice, Thibault},
@@ -83,9 +87,7 @@
     publisher = "Association for Computational Linguistics",
     url = "https://www.aclweb.org/anthology/N19-1153",
     doi = "10.18653/v1/N19-1153",
-    pages = "1493--1503",
-    abstract = "Lemmatization of standard languages is concerned with (i) abstracting over morphological differences and (ii) resolving token-lemma ambiguities of inflected words in order to map them to a dictionary headword. In the present paper we aim to improve lemmatization performance on a set of non-standard historical languages in which the difficulty is increased by an additional aspect (iii): spelling variation due to lacking orthographic standards. We approach lemmatization as a string-transduction task with an Encoder-Decoder architecture which we enrich with sentence information using a hierarchical sentence encoder. We show significant improvements over the state-of-the-art by fine-tuning the sentence encodings to jointly optimize a bidirectional language model loss. Crucially, our architecture does not require POS or morphological annotations, which are not always available for historical corpora. Additionally, we also test the proposed model on a set of typologically diverse standard languages showing results on par or better than a model without fine-tuned sentence representations and previous state-of-the-art systems. Finally, to encourage future work on processing of non-standard varieties, we release the dataset of non-standard languages underlying the present study, which is based on openly accessible sources.",
-}
+    pages = "1493--1503",}
 </pre>
             {% block cite_as %}{% endblock %}
             {% block details %}{% endblock %}
@@ -96,7 +98,6 @@
                 <li>Enrique Manjavacas &amp; Mike Kestemont. (2019, January 17). emanjavacas/pie v0.1.3 (Version v0.1.3). Zenodo. <a href="http://doi.org/10.5281/zenodo.2542537" rel="nofollow">http://doi.org/10.5281/zenodo.2542537</a> <em>Check the latest version here :</em><a href="https://doi.org/10.5281/zenodo.1637877" rel="nofollow">Zenodo DOI</a></li>
                 {% block bibliography %}{%endblock%}
             </ul>
-            <p>Please remember that <b>corpus creation and software engineering is valid research</b>, so please <b>cite these resources</b> when you use this lemmatizer for your research.</p>
         </div>
       </div>
     </div>
