@@ -15,7 +15,7 @@ controller_lasla = PieController(
     tagger=get_tagger("lasla", batch_size=8, device="cpu"),
     headers={"X-Accel-Buffering": "no"},
     get_iterator_and_processor=lasla_get.get_iterator_and_processor,
-    force_lower=True
+    force_lower=False
 )
 controller_lasla.init_app(app)
 
