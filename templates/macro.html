@@ -1,0 +1,26 @@
+{% macro form(destination, title, more_information) %}
+<main class="row">
+    <div class="col-12">
+        <h1>{{ title }}</h1>
+        <p>You can find more information on this specific model
+            here: <a href="{{more_information}}">{{more_information}}</a> </p>
+        <form class="form" action="{{ url_for(destination) }}" method="POST">
+            <div class="form-group row">
+              <div class="col-12">
+                  <textarea required id="data" placeholder="Type or paste your text here"
+                            name="data" class="form-control" rows="8"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Tag !</button>
+        </form>
+    </div>
+</main>
+{% endmacro %}
+
+{% macro nav_link(endpoint, text) %}
+    {% if request.endpoint.endswith(endpoint) %}
+        <li class="nav-item active"><a class="nav-link" href="{{ url_for(endpoint) }}">{{text}}</a></li>
+    {% else %}
+        <li class="nav-item"><a class="nav-link" href="{{ url_for(endpoint) }}">{{text}}</a></li>
+    {% endif %}
+{% endmacro %}

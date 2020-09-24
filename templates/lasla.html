@@ -1,0 +1,57 @@
+{% extends "container.html" %}
+{% from "macro.html" import form %}
+
+{% block details %}
+<h2 id="information-about-the-model">Information about the model</h2>
+<p><em>Note:</em> the model is currently being fine-tuned in the context of my PhD. I'll fill this part when it will be done.</p>
+<p>The training set is roughly <strong>1.5M tokens</strong>, dev test roughly 10k and test 169822. This is not counting punctuation, as LASLA data are lacking punctuation.</p>
+<ul class="incremental">
+<li>Enclitics are kept in a single token
+<ul class="incremental">
+<li>Enclitic lemma are separated as such <code>token[Caesarque]</code> == <code>lemma[Caesar界que]</code></li>
+<li>Morphology is the morphology of the first token</li>
+</ul></li>
+<li>Only numbers 1, 2 and 3 are known. Roman numbers are unknown.</li>
+<li>All punctuation signs are unknown, including the one used in abbr. <code>token[C]</code> == <code>lemma[Gaius]</code></li>
+<li>Lemma and tokens now accept lower and uppercasing. Noise was introduced in the dataset for better results.</li>
+</ul>
+{% endblock %}
+
+{% block logos %}
+  <a href="http://web.philo.ulg.ac.be/lasla">
+    <img height="70" alt="Lasla" src="{{ url_for('static', filename='models/lasla.jpg')}}">
+  </a>
+{% endblock %}
+
+{%block cita_as %}
+<pre>
+@software{thibault_clerice_2020_4043059,
+  author       = {Thibault Clérice},
+  title        = {Deucalion Latin Lemmatizer},
+  month        = sep,
+  year         = 2020,
+  publisher    = {Zenodo},
+  version      = {0.0.3},
+  doi          = {10.5281/zenodo.4043059},
+  url          = {https://doi.org/10.5281/zenodo.4043059}
+}
+@phdthesis{phdthesis,
+    author = {Thibault Clérice},
+    title  = {Dire la sexualité en latin classique et tardif : "une étude lexicographique par apprentissage profond"},
+    school = {École Doctorale 3LA, Laboratoire HISOMA, Université Lyon 3},
+    year   = "2017-(En cours)"
+}
+</pre>
+{% endblock %}
+
+{%block bibliography %}
+<li>Thibault Clérice. (2020, April 28). PonteIneptique/latin-lasla-models: 0.0.0 (Version 0.0.0). Zenodo. <a href="http://doi.org/10.5281/zenodo.3773328" rel="nofollow">http://doi.org/10.5281/zenodo.3773328</a></li>
+<li>D. Longrée, C. Philippart de Foy &amp; G. Purnelle. « Structures phrastiques et analyse automatique des données morphosyntaxiques : le projet LatSynt », in S. Bolasco, I. Chiari &amp; L. Giuliano (eds), Statistical Analysis of Textual Data, Proceedings of 10th International Conference Journées d'Analyse statistique des Données Textuelles, 9-11 June 2010, Sapienza University of Rome, Rome, LED, pp. 433-442.</li>
+<li>D. Longrée &amp; C. Poudat, « New Ways of Lemmatizing and Tagging Classical and post-Classical Latin: the LATLEM project of the LASLA », in P. Anreiter &amp; M. Kienpointner (éd.), Proceedings of the 15th International Colloquium on Latin Linguistics, (Innsbrucker Beiträge zur Sprachwissenschaft), Innsbruck, 2010, pp. 683-694.</li>
+<li>D. Longrée &amp; C. Philippart de Foy &amp; G. Purnelle, « Subordinate clause boundaries and word order in Latin: the contribution of the L.A.S.L.A. syntactic parser project LatSynt », in P. Anreiter &amp; M. Kienpointner, éd.), Proceedings of the 15th International Colloquium on Latin Linguistics, (Innsbrucker Beiträge zur Sprachwissenschaft), Innsbruck, 2010, pp. 673-681.</li>
+<li>D. Longrée &amp; Poudat C., « Variations langagières et annotation morphosyntaxique du latin classique », TAL, 50 – n° 2/2009, Special issue on "Natural Language Processing and Ancient Languages", pp. 129-148.</li>
+{% endblock %}
+
+{% block form %}
+    {{form("lasla-api.main", "Tag your Latin text", "https://github.com/PonteIneptique/latin-lasla-models")}}
+{% endblock %}

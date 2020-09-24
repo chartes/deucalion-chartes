@@ -1,2 +1,4 @@
 flask_pie>=0.0.7
-cltk==0.1.117
+pie-extended>=0.0.20
+nlp-pie==0.3.6
+torch==1.6.0

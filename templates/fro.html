@@ -1,0 +1,67 @@
+{% extends "container.html" %}
+{% from "macro.html" import form %}
+
+{%block cita_as %}
+<pre>
+@software{clerice_thibault_2019_3237455,
+  author       = {Clérice, Thibault and
+                  Camps, Jean-Baptiste and
+                  Pinche, Ariane},
+  title        = {Deucalion, Modèle Ancien Francais (0.2.0)},
+  month        = jun,
+  year         = 2019,
+  publisher    = {Zenodo},
+  version      = {v0.2.0},
+  doi          = {10.5281/zenodo.3237455},
+  url          = {https://doi.org/10.5281/zenodo.3237455}
+}
+@phdthesis{phdthesis,
+    author = {Thibault Clérice},
+    title  = {Dire la sexualité en latin classique et tardif : "une étude lexicographique par apprentissage profond"},
+    school = {École Doctorale 3LA, Laboratoire HISOMA, Université Lyon 3},
+    year   = "2017-(En cours)"
+}
+</pre>
+{% endblock %}
+
+
+{% block details %}
+<h2>Information</h2>
+<p>The model was trained on the following corpora :</p>
+<ul class="incremental">
+<li><em>Geste: un corpus de chansons de geste</em>, dir. Jean-Baptiste Camps, avec la collab. d'Elena Albarran, Alice Cochet &amp; Lucence Ing, Paris, 2016-…, http://github.com/Jean-Baptiste-Camps/Geste.</li>
+<li><em>Édition nativement numérique du recueil hagiographique &quot;Li Seint Confessor&quot; de Wauchier de Denain d'après le manuscrit 412 de la Bibliothèque nationale de France</em>, éd. Ariane Pinche, Lyon, en cours (only <em>Dialogues</em> and La vie de Saint Martin are used right now. Data are closed source until publication of the PhD thesis)</li>
+<li><em>Les Institutes de Justinien en français</em>, éd. F. Olivier-Martin (1935), éd. revue par F. Duval, lemmatisée par F. Duval et L. Ing. Paris, 2018.</li>
+<li><em>Chrétien de Troyes: Cligès, Erec, Lancelot, Perceval, Yvain -- Manuscrit P (BnF Fr. 794)</em>, éd. P. Kunstmann (2009), annotation revue par J.B. Camps et L. Ing (2017).</li>
+</ul>
+<p>The <strong>annotations</strong> are made according to the following reference lists:</p>
+<ul class="incremental">
+<li><strong>lemma:</strong> Adolf Tobler et Erhard Friedrich Lommatzsch, <em>Altfranzösisches Wörterbuch: édition électronique</em>, éd. Peter Blumenthal et Achim Stein, Stuttgart, F. Steiner, 2002.</li>
+<li><strong>POS and morph:</strong> Sophie Prévost, Céline Guillot, Alexei Lavrentiev et Serge Heiden, <em>Jeu d’étiquettes morphosyntaxiques CATTEX2009-max</em>, Lyon, 2013, http://bfm.ens-lyon.fr/IMG/pdf/Cattex2009_2.0.pdf.</li>
+</ul>
+<p>More information on the annotation practice can be found in the wiki of the <em>Geste</em> corpus: <a href="https://github.com/Jean-Baptiste-Camps/Geste/wiki" class="uri">https://github.com/Jean-Baptiste-Camps/Geste/wiki</a>.</p>
+<p>Sample from annotation:</p>
+<pre class="tsv"><code>form    lemma   POS morph
+G&#39;  je  PROper  PERS.=1|NOMB.=s|GENRE=m|CAS=n
+irai    aler    VERcjg  MODE=ind|TEMPS=fut|PERS.=1|NOMB.=s
+sor sor2    PRE MORPH=empty
+eus il  PROper  PERS.=3|NOMB.=p|GENRE=m|CAS=i
+por por2    PRE MORPH=empty
+lor lor2    DETpos  PERS.=3|NOMB.=p|GENRE=f|CAS=r
+terres  terre   NOMcom  NOMB.=p|GENRE=f|CAS=r
+saisir  saisir  VERinf  MORPH=empty</code></pre>
+{% endblock %}
+
+
+{%block bibliography %}
+<li><em>Geste: un corpus de chansons de geste</em>, dir. Jean-Baptiste Camps, avec la collab. d'Elena Albarran, Alice Cochet &amp; Lucence Ing, Paris, 2016-…, http://github.com/Jean-Baptiste-Camps/Geste.</li>
+<li><em>Édition nativement numérique du recueil hagiographique &quot;Li Seint Confessor&quot; de Wauchier de Denain d'après le manuscrit 412 de la Bibliothèque nationale de France</em>, éd. Ariane Pinche, Lyon, en cours (only <em>Dialogues</em> and La vie de Saint Martin are used right now. Data are closed source until publication of the PhD thesis)</li>
+<li><em>Les Institutes de Justinien en français</em>, éd. F. Olivier-Martin (1935), éd. revue par F. Duval, lemmatisée par F. Duval et L. Ing. Paris, 2018.</li>
+<li><em>Chrétien de Troyes: Cligès, Erec, Lancelot, Perceval, Yvain -- Manuscrit P (BnF Fr. 794)</em>, éd. P. Kunstmann (2009), annotation revue par J.B. Camps et L. Ing (2017).</li>
+{% endblock %}
+
+
+
+{% block form %}
+    {{form("fro-api.main", "Tag your Old French text", "https://github.com/chartes/deucalion-model-af")}}
+{% endblock %}

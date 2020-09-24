@@ -1,0 +1,105 @@
+{% from "macro.html" import nav_link with context %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png')}}">
+
+    <title>Deucalion, a lemmatization service - École Nationale des Chartes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <style type="text/css">
+        h1, h2 { color:rgb(189, 5, 45); }
+        .navbar-dark, .btn-primary { background-color : rgb(189, 5, 45)!important; border-color: rgb(189, 5, 45)!important; }
+        #logos {
+          display: flex;
+          justify-content: space-between;
+          align-content: space-between;
+        }
+        #logos a {
+            display: inline-block;
+        }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="{{ url_for(".index") }}">Deucalion</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {{nav_link(".fro", "Old French")}}
+            {{nav_link(".grc", "Ancient Greek")}}
+            {{nav_link(".latin", "Latin")}}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row" style="margin-top:15px; margin-bottom:15px; text-align: center;">
+          <div class="col-12 logo-container">
+              <div id="logos">
+                  <a href="//www.chartes.psl.eu/">
+                      <img height="70" alt="Ecole Nationale des Chartes" src="{{ url_for('static', filename='enc.png')}}">
+                  </a>
+                  <a href="https://www.huma-num.fr">
+                      <img height="70" alt="Humanum" src="{{ url_for('static', filename='humanum.jpg')}}">
+                  </a>
+                  {% block logos %}{% endblock %}
+              </div>
+          </div>
+      </div>
+    </div>
+      <div class="container">
+      {% block corps %}{% endblock %}
+      {% block form %}{% endblock %}
+      <div class="row" style="margin-top:15px; margin-bottom:15px; font-size: small;">
+        <div class="col-12">
+          <h2>Cite with the following</h2>
+<pre>
+@software{thibault_clerice_2020_3883590,
+  author       = {Clérice, Thibault},
+  title        = {Pie Extended, an extension for Pie with pre-processing and post-processing},
+  month        = jun,
+  year         = 2020,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.3883589},
+  url          = {https://doi.org/10.5281/zenodo.3883589}
+}
+@inproceedings{manjavacas-etal-2019-improving,
+    title = "Improving Lemmatization of Non-Standard Languages with Joint Learning",
+    author = "Manjavacas, Enrique  and
+      K{\'a}d{\'a}r, {\'A}kos  and
+      Kestemont, Mike",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/N19-1153",
+    doi = "10.18653/v1/N19-1153",
+    pages = "1493--1503",
+    abstract = "Lemmatization of standard languages is concerned with (i) abstracting over morphological differences and (ii) resolving token-lemma ambiguities of inflected words in order to map them to a dictionary headword. In the present paper we aim to improve lemmatization performance on a set of non-standard historical languages in which the difficulty is increased by an additional aspect (iii): spelling variation due to lacking orthographic standards. We approach lemmatization as a string-transduction task with an Encoder-Decoder architecture which we enrich with sentence information using a hierarchical sentence encoder. We show significant improvements over the state-of-the-art by fine-tuning the sentence encodings to jointly optimize a bidirectional language model loss. Crucially, our architecture does not require POS or morphological annotations, which are not always available for historical corpora. Additionally, we also test the proposed model on a set of typologically diverse standard languages showing results on par or better than a model without fine-tuned sentence representations and previous state-of-the-art systems. Finally, to encourage future work on processing of non-standard varieties, we release the dataset of non-standard languages underlying the present study, which is based on openly accessible sources.",
+}
+</pre>
+            {% block cite_as %}{% endblock %}
+            {% block details %}{% endblock %}
+          <h2>Bibliography</h2>
+            <p><small>This lemmatizer is provided to you thanks to the data of the LASLA, the software of Emmanuel Manjavacas and Mike Kestemont and some engineering from the École nationale des chartes. If you want to cite them :</small></p>
+            <ul>
+                <li>E. Manjavacas &amp; ﻿Á. Kádár &amp; M. Kestemont, « Improving Lemmatization of Non-Standard Languages with Joint Learning », Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), Special issue on "Natural Language Processing and Ancient Languages", 2019, pp. 493--1503.</li>
+                <li>Enrique Manjavacas &amp; Mike Kestemont. (2019, January 17). emanjavacas/pie v0.1.3 (Version v0.1.3). Zenodo. <a href="http://doi.org/10.5281/zenodo.2542537" rel="nofollow">http://doi.org/10.5281/zenodo.2542537</a> <em>Check the latest version here :</em><a href="https://doi.org/10.5281/zenodo.1637877" rel="nofollow">Zenodo DOI</a></li>
+                {% block bibliography %}{%endblock%}
+            </ul>
+            <p>Please remember that <b>corpus creation and software engineering is valid research</b>, so please <b>cite these resources</b> when you use this lemmatizer for your research.</p>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
