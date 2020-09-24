@@ -59,7 +59,7 @@ controller_grc = PieController(
     get_iterator_and_processor=grc_get.get_iterator_and_processor,
     force_lower=True
 )
-controller_freemgrc.init_app(app)
+controller_grc.init_app(app)
 
 if __name__ == "__main__":
     app.run(debug=True)
