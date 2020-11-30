@@ -84,6 +84,11 @@ def fro():
 def grc():
     return render_template("grc.html")
 
+@app.route("/freem")
+def freem():
+    return render_template("freem.html")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

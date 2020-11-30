@@ -1,0 +1,73 @@
+{% extends "container.html" %}
+{% from "macro.html" import form %}
+
+{%block cite_as %}
+<pre>
+@software{clerice_thibault_2019_3237455,
+  author       = {Gabay, Simon and
+                  Clérice, Thibault and
+                  Camps, Jean-Baptiste and
+                  Tanguy, Jean-Baptiste and
+                  Gille-Levenson, Matthias},
+  title        = {Deucalion, Modèle Français moderne (0.1.0)},
+  month        = jun,
+  year         = 2020,
+  publisher    = {GitHub},
+  version      = {v0.1.0},
+  url          = {https://github.com/e-ditiones/LEM17/releases/tag/v0.1}
+}
+</pre>
+{% endblock %}
+
+
+{% block details %}
+<h2>Information</h2>
+<p>The model is trained on normalised (<em>i.e.</em> "translated" into contemporary French) and non-normalised transcriptions.</p>
+<p>The model was trained on the following corpora :</p>
+<ul class="incremental">
+<li><em>CornMol</em> for lemma + POS. Cf. Florian Cafiero, Jean-Baptiste Camps. <em>Why Molière most likely did write his plays</em>. Science Advances, American Association for the Advancement of Science (AAAS), 2019, 5 (11), pp.eaax5489. <a href="https://advances.sciencemag.org/content/5/11/eaax5489" class="uri">10.1126/sciadv.aax5489</a>.</li>
+<li><em>FranText OA</em> for lemmas. The original corpus has been heavily corrected. Cf. <em>FranText</em>, <a href="https://www.frantext.fr/" class="uri">https://www.frantext.fr/</a>.</li>
+<li><em>Presto gold</em> for lemma + POS. The original corpus has been heavily corrected. Cf. <em>Presto project</em>, <a href="http://presto.ens-lyon.fr/" class="uri">http://presto.ens-lyon.fr/</a>.</li>
+<li><em>Presto max</em> for lemmas. The original corpus has been heavily corrected. Cf. <em>Presto project</em>, <a href="http://presto.ens-lyon.fr/" class="uri">http://presto.ens-lyon.fr/</a>.</li>
+</ul>
+<p>The <strong>annotations</strong> are made according to the following reference lists:</p>
+<ul class="incremental">
+<li><strong>lemma:</strong> Sascha Diwersy, Achille Falaise, Marie-Hélène Lay, Gilles Souvay, <em>Ressources et méthodes pour l’analyse diachronique</em>, Langages 2017/2 (N° 206), pp. 21-24: <a href="https://www.cairn.info/revue-langages-2017-2-page-21.htm" class="uri">https://www.cairn.info/revue-langages-2017-2-page-21.htm</a>.</li>
+<li><strong>POS and morph:</strong> Sophie Prévost, Céline Guillot, Alexei Lavrentiev et Serge Heiden, <em>Jeu d’étiquettes morphosyntaxiques CATTEX2009-max</em>, Lyon, 2013, http://bfm.ens-lyon.fr/IMG/pdf/Cattex2009_2.0.pdf.</li>
+</ul>
+<p>More information on the annotation practice can be found in Simon Gabay, Jean-Baptiste Camps, Thibault Clérice, <em>Manuel d'annotation linguistique pour le français moderne (XVIe -XVIIIe siècles)</em> 2020: <a href="https://hal.archives-ouvertes.fr/hal-02571190" class="uri">https://hal.archives-ouvertes.fr/hal-02571190</a>.</p>
+<p>Sample from annotation:</p>
+<pre class="tsv"><code>form    lemma   POS morph
+Pour  pour  PRE MORPH=empty
+moi je  PROper  PERS.=1|NOMB.=s|GENRE=x|CAS=i
+je  je  PROper  PERS.=1|NOMB.=s|GENRE=x|CAS=n
+suis  être  VERcjg  MODE=ind|TEMPS=pst|PERS.=1|NOMB.=s
+toûjours  toujours  ADVgen  MORPH=empty
+ici ici ADVgen  MORPH=empty
+, , PONfbl  MORPH=empty
+où  que PROrel  NOMB.=x|GENRE=x|CAS=i
+, , PONfbl  MORPH=empty
+à à PRE MORPH=empty
+des un  DETndf  NOMB.=p|GENRE=m
+rumatismes  rhumatisme  NOMcom  NOMB.=p|GENRE=f
+près  près  ADVgen  MORPH=empty
+, , PONfbl  MORPH=empty
+je  je  PROper  PERS.=1|NOMB.=s|GENRE=x|CAS=n
+me  je  PROper  PERS.=1|NOMB.=s|GENRE=x|CAS=r
+suis  être  VERcjg  MODE=ind|TEMPS=pst|PERS.=1|NOMB.=s
+assez assez ADVgen  MORPH=empty
+bien  bien  ADVgen  MORPH=empty
+porté porter  VERppe  NOMB.=s|GENRE=m
+. . PONfrt  MORPH=empty</code></pre>
+{% endblock %}
+
+
+{%block bibliography %}
+<li><em>Standardizing linguistic data: method and tools for annotating (pre-orthographic) French</em>, Simon Gabay, Thibault Clérice, Jean-Baptiste Camps, Jean-Baptiste Tanguy, Matthias Gille-Levenson<em>, DDH20 : Data and Digital Humanities 2020</em>, 15-17 Oct 2020}{Hammamet (Tunisia)</li>
+{% endblock %}
+
+
+
+{% block form %}
+    {{form("freem-api.main", "Tag your (Early) Modern French text", "https://github.com/chartes/deucalion-model-freem")}}
+{% endblock %}
