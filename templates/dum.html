@@ -1,0 +1,45 @@
+{% extends "container.html" %}
+{% from "macro.html" import form %}
+
+{% block details %}
+<h2 id="information-about-the-model">Information about the model</h2>
+<p>This model provides support for the lemmatization and part-of-speech tagging of Middle Dutch texts (ca. 1150-1450 AD). The model was trained on the union of the four main corpora that are available for Middle Dutch dialects. An attempt has been made at uniformizing the various tagging conventions across the subcorpora, but this model generally aims for a maximal lexical coverage, at the expense of some consistency in tagging. The model furthermore assumes that your input has been tokenized already: although it can deal with clitical forms (e.g. <emph>tpaert</emph>), it will make no attempts at token merging in the event of non-standard token splitting (e.g. <emph>ghe seit</emph>). The included sub corpora on which this model was trained include:</p>
+<ul class="incremental">
+<li>Dutch Language Institute, <i>Corpus-Gysseling</i>, [<a href="https://www.ivdnt.org/corpora-lexica/corpus-gysseling/">link</a>]</li>
+<li>Dutch Language Institute, <i>Corpus of Middle Dutch</i>, [<a href="https://www.ivdnt.org/corpora-lexica/corpus-middelnederlands/#corpus-of-middle-dutch">link</a>]</li>
+<li>Royal Academy of Dutch Language and Literature, <i>Corpus van veertiende-eeuwse niet-literaire Nederlandse teksten (C14)</i>, [<a href="https://ctb.kantl.be/publicaties/corpus-van-veertiende-eeuwse-niet-literaire-nederlandse-teksten">link</a>]</li>
+<li>All smaller sample of religious texts, described in the paper by Kestemont et al. (2017) listed below</li>
+</ul>
+<p>Much credit should go to the <a href="https://ivdnt.org/the-dutch-language-institute">Dutch Language Institute</a> who are the primary curator of these materials.</p>
+{% endblock %}
+
+
+{%block cite_as %}
+<pre>
+@article{KestemontEA17,
+  author    = {Mike Kestemont and
+               Guy De Pauw and
+               Renske van Nie and
+               Walter Daelemans},
+  title     = {Lemmatization for variation-rich languages using deep learning},
+  journal   = {Digital Scholarship in the Humanities},
+  volume    = {32},
+  number    = {4},
+  pages     = {797--815},
+  year      = {2017},
+  url       = {https://doi.org/10.1093/llc/fqw034},
+  doi       = {10.1093/llc/fqw034},
+}
+</pre>
+{% endblock %}
+
+{%block bibliography %}
+<li>Dutch Language Institute, <i>Corpus-Gysseling</i>, [<a href="https://www.ivdnt.org/corpora-lexica/corpus-gysseling/">link</a>]</li>
+<li>Dutch Language Institute, <i>Corpus of Middle Dutch</i>, [<a href="https://www.ivdnt.org/corpora-lexica/corpus-middelnederlands/#corpus-of-middle-dutch">link</a>]</li>
+<li>Royal Academy of Dutch Language and Literature, <i>Corpus van veertiende-eeuwse niet-literaire Nederlandse teksten (C14)</i>, [<a href="https://ctb.kantl.be/publicaties/corpus-van-veertiende-eeuwse-niet-literaire-nederlandse-teksten">link</a>]</li>
+
+{% endblock %}
+
+{% block form %}
+    {{form("dum-api.main", "Tag your Middle Dutch text", "https://github.com/hipster-philology/middle-dutch-model")}}
+{% endblock %}

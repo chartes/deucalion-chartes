@@ -7,6 +7,7 @@ from pie_extended.models.fro import imports as fro_get
 from pie_extended.models.fr import imports as fr_get
 from pie_extended.models.freem import imports as freem_get
 from pie_extended.models.grc import imports as grc_get
+from pie_extended.models.dum import imports as dum_get
 from pie_extended.cli.sub import get_tagger
 
 here = os.path.dirname(os.path.abspath(__file__))
@@ -66,6 +67,16 @@ controller_grc = PieController(
 controller_grc.init_app(app)
 
 
+controller_dum = PieController(
+    path="/api/dum/", name="dum-api",
+    tagger=get_tagger("dum", batch_size=8, device="cpu"),
+    headers={"X-Accel-Buffering": "no"},
+    get_iterator_and_processor=dum_get.get_iterator_and_processor,
+    force_lower=False
+)
+controller_dum.init_app(app)
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -87,6 +98,10 @@ def grc():
 @app.route("/freem")
 def freem():
     return render_template("freem.html")
+
+@app.route("/dum")
+def dum():
+    return render_template("dum.html")
 
 
 
