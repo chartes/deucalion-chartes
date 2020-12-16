@@ -1,0 +1,74 @@
+{% extends "container.html" %}
+{% from "macro.html" import form %}
+
+{%block cite_as %}
+<pre>
+@misc{camps2020corpus,
+      title={Corpus and Models for Lemmatisation and POS-tagging of Classical French Theatre}, 
+      author={Jean-Baptiste Camps and 
+              Simon Gabay and 
+              Paul Fièvre and 
+              Thibault Clérice and 
+              Florian Cafiero},
+      year={2020},
+      eprint={2005.07505},
+      archivePrefix={arXiv},
+      url={https://arxiv.org/abs/2005.07505},
+      primaryClass={cs.CL}
+}
+</pre>
+{% endblock %}
+
+
+{% block details %}
+<h2>Information</h2>
+<p>The model is trained on transcriptions with modernised spelling.</p>
+<p>The model was trained on the following corpora :</p>
+<ul class="incremental">
+  <li><em>Théâtre classique ([Fièvre, 2007)</em> samples, annotated in lemma and POS by J.B. Camps, Fl. Cafiero and S. Gabay (cf. F. Cafiero and J.-B. Camps, 2019).</li>
+  <li><em>FranText OA</em> for lemmas (ATILF and Université de Lorraine, 1998-2018). The original corpus has been subject to some corrections (see Camps et al., 2020).</li>
+</ul>
+<p>The <strong>annotations</strong> are made according to the following reference lists:</p>
+<ul class="incremental">
+  <li><strong>lemma:</strong> Morphalou (Romary L., Salmon-Alt S. & Francopoulo G. (2004), “Standards going concrete: From LMF to Morphalou”, <em>Proceedings of the Workshop on Enhancing and Using Electronic Dictionaries – ElectricDict’04 (Geneva, Switzerland)</em>, Stroudsburg (PA), 22-28. ).</li>
+<li><strong>POS and morph:</strong> Sophie Prévost, Céline Guillot, Alexei Lavrentiev et Serge Heiden, <em>Jeu d’étiquettes morphosyntaxiques CATTEX2009-max</em>, Lyon, 2013, http://bfm.ens-lyon.fr/IMG/pdf/Cattex2009_2.0.pdf.</li>
+</ul>
+<p>More information on the annotation practice can be found in Simon Gabay, Jean-Baptiste Camps, Thibault Clérice, <em>Manuel d'annotation linguistique pour le français moderne (XVIe -XVIIIe siècles)</em> 2020: <a href="https://hal.archives-ouvertes.fr/hal-02571190" class="uri">https://hal.archives-ouvertes.fr/hal-02571190</a>.</p>
+<p>Sample from annotation:</p>
+<pre class="tsv"><code>
+token   lemma   POS morph   treated
+Il  il  PROimp  PERS.=3|NOMB.=s|GENRE=m|CAS=n   Il
+faut    falloir VERcjg  MODE=ind|TEMPS=pst|PERS.=3|NOMB.=s  faut
+que que CONsub  MORPH=empty que
+ce  ce  DETdem  NOMB.=s|GENRE=m ce
+matin   matin   NOMcom  NOMB.=s|GENRE=m matin
+,   ,   PONfbl  MORPH=empty ,
+à   à   PRE MORPH=empty à
+force   force   NOMcom  NOMB.=s|GENRE=f force
+de  de  PRE MORPH=empty de
+trop    trop    ADVgen  MORPH=empty trop
+boire   boire   VERinf  MORPH=empty boire
+,   ,   PONfbl  MORPH=empty ,
+Il  il  PROper  PERS.=3|NOMB.=s|GENRE=m|CAS=n   Il
+se  se  PROper  PERS.=3|NOMB.=s|CAS=r   se
+soit    être    VERcjg  MODE=sub|TEMPS=pst|PERS.=3|NOMB.=s  soit
+troublé troubler    VERppe  NOMB.=s|GENRE=m troublé
+le  le  DETdef  NOMB.=s|GENRE=m le
+cerveau cerveau NOMcom  NOMB.=s|GENRE=m cerveau
+.   .   PONfrt  MORPH=empty .  
+</code></pre>
+{% endblock %}
+
+
+{%block bibliography %}
+<li>J.-B. Camps, S. Gabay, P. Fièvre, Th. Clérice and Fl. Cafiero, 2020. <em>Corpus and Models for Lemmatisation and POS-tagging of Classical French Theatre</em>, <a href="https://arxiv.org/abs/2005.07505">https://arxiv.org/abs/2005.07505</a>.</li>
+<li>F. Cafiero and J.B. Camps, 2019. <em>Why Molière most likely did write his plays</em>. Science Advances, 5 (11), eaax5489. <a href="https://advances.sciencemag.org/content/5/11/eaax5489" class="uri">10.1126/sciadv.aax5489</a>.</li>
+<li>P. Fièvre, 2008. Théâtre classique, <a href="http://www.theatre-classique.fr">http://www.theatre-classique.fr</a>.</li>
+<li>ATILF-CNRS and Université de Lorraine, 1998-2018. <em>Base textuelle frantext: Démonstration</em>, <a href="https://www.frantext.fr/repository/frantext-demo/">https://www.frantext.fr/repository/frantext-demo/</a>.</li>
+{% endblock %}
+
+
+
+{% block form %}
+{{form("freem-api.main", "Tag your Modern French text", "https://arxiv.org/abs/2005.07505")}}
+{% endblock %}

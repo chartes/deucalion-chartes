@@ -95,6 +95,10 @@ def fro():
 def grc():
     return render_template("grc.html")
 
+@app.route("/fr")
+def freem():
+    return render_template("fr.html")
+
 @app.route("/freem")
 def freem():
     return render_template("freem.html")
